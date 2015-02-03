@@ -4,7 +4,7 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-02-03T20:58:44+02:00</updated>
+ <updated>2015-02-03T22:00:06+02:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
@@ -17,7 +17,9 @@
    <link href="http://kaandedeoglu.github.io//2015/02/03/first-post/"/>
    <updated>2015-02-03T00:00:00+02:00</updated>
    <id>http://kaandedeoglu.github.io/2015/02/03/first-post</id>
-   <content type="html">&lt;p&gt;This is just a warming up post for my new blog. Getting used to Jekyll and Markdown.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This is just a warming up post for the blog. &lt;/p&gt;
+
+&lt;p&gt;Getting used to Jekyll and Markdown.&lt;/p&gt;
 </content>
  </entry>
  
