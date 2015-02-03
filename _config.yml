@@ -1,0 +1,25 @@
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Lazy Thoughts
+tagline:          
+url:              http://kaandedeoglu.github.io
+paginate:         1
+baseurl:          /
+author:
+  name:           Kaan Dedeoglu
+  url:            https://twitter.com/kaandedeoglu
+  email:          kaandedeoglu@me.com
+comments: true
+
+pages_list:       
+  About: '/about'
+  Archive: '/archive'
+  Feed: '/atom.xml'
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/kaandedeoglu

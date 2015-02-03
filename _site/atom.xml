@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Lazy Thoughts</title>
+ <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
+ <link href="http://kaandedeoglu.github.io/"/>
+ <updated>2015-02-03T20:58:44+02:00</updated>
+ <id>http://kaandedeoglu.github.io</id>
+ <author>
+   <name>Kaan Dedeoglu</name>
+   <email>kaandedeoglu@me.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>First Post</title>
+   <link href="http://kaandedeoglu.github.io//2015/02/03/first-post/"/>
+   <updated>2015-02-03T00:00:00+02:00</updated>
+   <id>http://kaandedeoglu.github.io/2015/02/03/first-post</id>
+   <content type="html">&lt;p&gt;This is just a warming up post for my new blog. Getting used to Jekyll and Markdown.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
