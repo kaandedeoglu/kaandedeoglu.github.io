@@ -230,6 +230,8 @@ Putting a breakpoint will reveal that everything went as expected.
 
 ![Breakpoint]({{ site.url }}/assets/JSONMapping/image.png)
 
+***
+
 ##Limitations
 
 One thing that didn't work out was using `Mappable` structs instead of classes. This is due to the fact that `Serializer`'s are expected to return `AnyObject` as its result, and structs are not `AnyObject`, which is a shame since structs are the perfect value types.
