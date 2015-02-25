@@ -4,7 +4,7 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-02-20T19:51:45+02:00</updated>
+ <updated>2015-02-25T19:11:18+02:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>Type-safe JSON responses in Swift</title>
+   <title>From JSON to Type-safe objects in Swift</title>
    <link href="http://kaandedeoglu.github.io//2015/02/20/Typesafe-JSON-reponses-in-Swift/"/>
    <updated>2015-02-20T00:00:00+02:00</updated>
    <id>http://kaandedeoglu.github.io/2015/02/20/Typesafe-JSON-reponses-in-Swift</id>

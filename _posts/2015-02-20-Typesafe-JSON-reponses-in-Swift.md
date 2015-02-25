@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Type-safe JSON responses in Swift
+title: From JSON to Type-safe objects in Swift
 comments: true
+tags: JSON to object in Swift
 ---
 
 >This post uses Swift 1.2 beta and the Swift 1.2 branches for both Alamofire and ObjectMapper
