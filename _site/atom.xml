@@ -4,13 +4,32 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-03-16T13:56:31+02:00</updated>
+ <updated>2015-06-17T22:11:17+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
    <email>kaandedeoglu@me.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Working Hard</title>
+   <link href="http://kaandedeoglu.github.io//2015/06/17/working-hard/"/>
+   <updated>2015-06-17T00:00:00+03:00</updated>
+   <id>http://kaandedeoglu.github.io/2015/06/17/working-hard</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/WorkingHard/working_hard.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;17k lines of Swift and counting…&lt;/p&gt;
+
+&lt;p&gt;I’m almost at the end of a big project. It’s been a lot of fun.&lt;/p&gt;
+
+&lt;p&gt;Using Swift has worked out great, it allowed me to use abstractions that are nearly impossible to achieve in Objective-C. I’ve yet to have a crash from the test builds sent out to the team. Of course, there’s a lot of refactoring to be done when we actually ship.&lt;/p&gt;
+
+&lt;p&gt;Swift 2.0 will make things much better, I’m already thinking of how much repeated code protocol extensions will save me. It was a good first serious project in a new language.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Here’s to many more!&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>From JSON to Type-safe objects in Swift</title>
