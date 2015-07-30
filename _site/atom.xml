@@ -4,13 +4,155 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-06-17T22:11:17+03:00</updated>
+ <updated>2015-07-31T00:59:50+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
    <email>kaandedeoglu@me.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Shark</title>
+   <link href="http://kaandedeoglu.github.io//2015/07/28/Shark/"/>
+   <updated>2015-07-28T00:00:00+03:00</updated>
+   <id>http://kaandedeoglu.github.io/2015/07/28/Shark</id>
+   <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: This is post discusses &lt;strong&gt;Shark&lt;/strong&gt;, which uses Swift 2.0 and it’s toolchain. Make sure you’re using the correct toolchain by doing &lt;code&gt;sudo xcode-select -switch /Applications/Xcode-beta.app/Contents/Developer/&lt;/code&gt; before you begin.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I’ve been working on a small Swift script called &lt;a href=&quot;https://github.com/kaandedeoglu/Shark&quot;&gt;&lt;strong&gt;Shark&lt;/strong&gt;&lt;/a&gt; for a while. It aims to leverage Swift’s strong type system in order to make image loading type-safe.&lt;/p&gt;
+
+&lt;p&gt;Let’s build an example project that shows how to use &lt;strong&gt;Shark&lt;/strong&gt;. Then at the end, we’ll shorty discuss how it works.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-shark&quot;&gt;Installing Shark&lt;/h3&gt;
+&lt;p&gt;Clone the repo if you haven’t already. &lt;a href=&quot;https://github.com/kaandedeoglu/Shark&quot;&gt;https://github.com/kaandedeoglu/Shark&lt;/a&gt;. The repo contains the source to the script, and also a compiled executable. There are two ways to setup &lt;strong&gt;Shark&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy the &lt;code&gt;Shark.swift&lt;/code&gt; file to your project directory. Make sure you don’t add it to your project. &lt;em&gt;Keeping the file in some other location works as well, but will cause big headaches if you’re working in a team&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Move the executable named &lt;code&gt;shark&lt;/code&gt; to &lt;em&gt;/usr/local/bin&lt;/em&gt;. Since the library is rapidly evolving at the time of writing, doing this every time there’s an update can be mildly annoying.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you don’t like the sound of adding an unknown executable to your bin folder. You can take a look at the source, and use &lt;code&gt;xcrun -sdk macosx swiftc Shark.swift -o shark&lt;/code&gt; to build your own executable.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;I’m looking for ways to make the installation easier - any ideas are very welcome&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tutorial&quot;&gt;Tutorial&lt;/h2&gt;
+
+&lt;p&gt;Start up Xcode 7. Start by creating an new “Single Screen Application”. For the purposes of this tutorial, I called mine &lt;em&gt;ManyImages&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/1.png&quot; alt=&quot;Empty Project&quot; /&gt;
+&lt;em&gt;Our empty, boring project&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to add some images to the project. After all, we called it ManyImages. For the sake of easiness, I just copied the contents of the image assets folder of another project of mine. I suggest you do the same instead of looking for images to include.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/2.png&quot; alt=&quot;Images Added&quot; /&gt;
+&lt;em&gt;much image, very pixel, wow&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I found out that using &lt;strong&gt;Shark&lt;/strong&gt;, it’s almost always better to use folders to group images. This way, code completion makes it much easier to find the image you’re looking for.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Use the small + icon at the bottom left of the asset catalogue screen to add new folders&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/3.png&quot; alt=&quot;Organized Images&quot; /&gt;
+&lt;em&gt;Organize much?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Looks much better. Now to the fun part:&lt;/p&gt;
+
+&lt;p&gt;Go to project settings, select your target, and switch to the &lt;code&gt;Build Phases&lt;/code&gt; tab. Use the + icon at the top of the page and select &lt;em&gt;New Run Script Phase&lt;/em&gt;. This will create a new run script. Drag the newly created &lt;code&gt;Run Script&lt;/code&gt; tab to place it below &lt;code&gt;Target Dependencies&lt;/code&gt; and above &lt;code&gt;Compile Sources&lt;/code&gt;. You can also click on the word &lt;code&gt;Run Script&lt;/code&gt; and rename it to &lt;code&gt;Shark&lt;/code&gt;. Your screen should look like this when you’re done.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/4.png&quot; alt=&quot;Build Phases&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, expand the run script (now called &lt;em&gt;Shark&lt;/em&gt;) tab. &lt;strong&gt;Shark&lt;/strong&gt; takes two parameters. The path to to image assets folder, with an extension &lt;code&gt;.xcassets&lt;/code&gt;, and an output directory where the generated file will be written.&lt;/p&gt;
+
+&lt;p&gt;If you’ve followed step 1 in the installation directions. Then the script will look like:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;xcrun -sdk macosx swift &lt;span class=&quot;s2&quot;&gt;&amp;quot;${PROJECT_DIR}/Shark.swift&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${PROJECT_DIR}/ManyImages/Assets.xcassets&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${PROJECT_DIR}/ManyImages/&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And if you’ve followed step 2 and moved the shark executable in &lt;em&gt;/usr/local/bin&lt;/em&gt;, the script will look like:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;shark &lt;span class=&quot;s2&quot;&gt;&amp;quot;${PROJECT_DIR}/ManyImages/Assets.xcassets&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${PROJECT_DIR}/ManyImages/&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Both cases are displayed below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/5.png&quot; alt=&quot;Script With Swiftc&quot; /&gt;
+&lt;em&gt;Running Shark with the Swift toolchain&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/6.png&quot; alt=&quot;Script With Executable&quot; /&gt;
+&lt;em&gt;Running Shark with the executable&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;With this setup, we’ve told Xcode to run &lt;strong&gt;Shark&lt;/strong&gt; before each build. Open your project folder, and you should see a file called &lt;code&gt;SharkImages.swift&lt;/code&gt;! &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/7.png&quot; alt=&quot;Finder&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drag and add this file to your project, we are almost there!&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at the generated file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/8.png&quot; alt=&quot;SharkImages.swift&quot; /&gt;
+&lt;em&gt;So simple, but so useful&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that &lt;em&gt;Shark&lt;/em&gt; has created a nested enum for each folder, and a case for each image. &lt;/p&gt;
+
+&lt;p&gt;The file has also some &lt;code&gt;Swift 2.0&lt;/code&gt; Protocol Extension magic to add a computed property named &lt;code&gt;image&lt;/code&gt; to each generated enum, as well as an extension on &lt;code&gt;UIImage&lt;/code&gt; itself.&lt;/p&gt;
+
+&lt;p&gt;With all this hard work behind us, it’s time to reap the rewards. Switch to &lt;code&gt;ViewController.swift&lt;/code&gt;, and let’s try loading an image using &lt;strong&gt;Shark&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;UIImageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Shark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SocialIcons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_share_checked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addSubview&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice how we get code completion suggestions from Xcode as we type.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/9.png&quot; alt=&quot;Code Completion 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/10.png&quot; alt=&quot;Code Completion 2&quot; /&gt;
+&lt;em&gt;Who doesn’t &lt;strong&gt;love&lt;/strong&gt; code completion?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;With our type safe enums, we’ll never make typing mistakes when loading images. Better yet, with good enough grouping and naming, we won’t have to constantly switch to look up image names.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+
+&lt;p&gt;Under the cover, what &lt;strong&gt;Shark&lt;/strong&gt; does is pretty simple. It walks down the .xcassets folder, creates a model of the folder structure, and uses that to generate a text output which get’s written to a file. &lt;/p&gt;
+
+&lt;p&gt;I just want to point out the data type I used to represent the folder structure. I think it’s very neat, and without &lt;code&gt;Swift&lt;/code&gt; things might have gotten a lot uglier.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This concise, 4 line &lt;code&gt;enum&lt;/code&gt; is all it took to successfully describe the folder structure. &lt;/p&gt;
+
+&lt;p&gt;The fact that we can pattern match on this is plain amazing, and it allows for easy construction of recursive functions. &lt;/p&gt;
+
+&lt;p&gt;Consider this function signature, also from the script:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createEnumDeclarationForResources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When we think in terms of pattern matching, we automatically split the problem into smaller chunks.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//A single image file, create a new case, &lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//return the string -&amp;gt; case imageName = &amp;quot;imageName&amp;quot;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;folderName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subResources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//A new directory, create a new enum, &lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//return the string -&amp;gt; &amp;quot;enum folderName {&amp;quot; + createEnumDeclarationForResources(subResources) + &amp;quot;}&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The recursive call to &lt;code&gt;createEnumDeclarationForResources&lt;/code&gt; is easy to understand thanks to the easy decomposition of .Directory values through pattern matching.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Working Hard</title>
