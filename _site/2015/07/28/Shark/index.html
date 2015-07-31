@@ -111,7 +111,7 @@
 
 <p><img src="http://kaandedeoglu.github.io/assets/Shark/4.png" alt="Build Phases" /></p>
 
-<p>Now, expand the run script (now called <em>Shark</em>) tab. <strong>Shark</strong> takes two parameters. The path to to image assets folder, with an extension <code>.xcassets</code>, and an output directory where the generated file will be written.</p>
+<p>Now, expand the run script (now called <em>Shark</em>) tab. <strong>Shark</strong> takes two parameters. The path to the image assets folder, with an extension <code>.xcassets</code>, and an output directory where the generated file will be written.</p>
 
 <p>If you’ve followed step 1 in the installation directions. Then the script will look like:</p>
 
@@ -180,14 +180,15 @@
 
 <p>When we think in terms of pattern matching, we automatically split the problem into smaller chunks. The implementation of the above function looks something like this:</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">for</span> <span class="n">resource</span> <span class="k">in</span> <span class="n">resources</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">resultString</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">resource</span> <span class="k">in</span> <span class="n">resources</span> <span class="p">{</span>
 	<span class="k">switch</span> <span class="n">resource</span> <span class="p">{</span>
 	<span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">File</span><span class="p">(</span><span class="n">imageName</span><span class="p">)</span><span class="o">:</span>
-	<span class="c1">//A single image file, create a new case, </span>
-	<span class="c1">//return the string -&gt; case imageName = &quot;imageName&quot;</span>
+	<span class="c1">//A single image file, append a new case, </span>
+	<span class="c1">//resultString += case imageName = &quot;imageName&quot;</span>
 	<span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">Directory</span><span class="p">(</span><span class="n">folderName</span><span class="p">,</span> <span class="n">subResources</span><span class="p">)</span><span class="o">:</span>
-	<span class="c1">//A new directory, create a new enum, </span>
-	<span class="c1">//return the string -&gt; &quot;enum folderName {&quot; + createEnumDeclarationForResources(subResources) + &quot;}&quot;</span>
+	<span class="c1">//A new directory, append a new enum, </span>
+	<span class="c1">//resultString +=  enum folderName {  createEnumDeclarationForResources(subResources)  }</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
@@ -271,7 +272,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-07-31T01:21:43+03:00">2015</time>. Lazy thoughts, All rights reserved.
+          &copy; <time datetime="2015-07-31T11:49:00+03:00">2015</time>. Lazy thoughts, All rights reserved.
         </small>
       </footer>
     </div>

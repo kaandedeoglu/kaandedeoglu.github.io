@@ -4,7 +4,7 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-07-31T01:21:43+03:00</updated>
+ <updated>2015-07-31T11:49:00+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
@@ -70,7 +70,7 @@
 
 &lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/Shark/4.png&quot; alt=&quot;Build Phases&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Now, expand the run script (now called &lt;em&gt;Shark&lt;/em&gt;) tab. &lt;strong&gt;Shark&lt;/strong&gt; takes two parameters. The path to to image assets folder, with an extension &lt;code&gt;.xcassets&lt;/code&gt;, and an output directory where the generated file will be written.&lt;/p&gt;
+&lt;p&gt;Now, expand the run script (now called &lt;em&gt;Shark&lt;/em&gt;) tab. &lt;strong&gt;Shark&lt;/strong&gt; takes two parameters. The path to the image assets folder, with an extension &lt;code&gt;.xcassets&lt;/code&gt;, and an output directory where the generated file will be written.&lt;/p&gt;
 
 &lt;p&gt;If you’ve followed step 1 in the installation directions. Then the script will look like:&lt;/p&gt;
 
@@ -139,14 +139,15 @@
 
 &lt;p&gt;When we think in terms of pattern matching, we automatically split the problem into smaller chunks. The implementation of the above function looks something like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;//A single image file, create a new case, &lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;//return the string -&amp;gt; case imageName = &amp;quot;imageName&amp;quot;&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//A single image file, append a new case, &lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//resultString += case imageName = &amp;quot;imageName&amp;quot;&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;folderName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subResources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;//A new directory, create a new enum, &lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;//return the string -&amp;gt; &amp;quot;enum folderName {&amp;quot; + createEnumDeclarationForResources(subResources) + &amp;quot;}&amp;quot;&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//A new directory, append a new enum, &lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//resultString +=  enum folderName {  createEnumDeclarationForResources(subResources)  }&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
