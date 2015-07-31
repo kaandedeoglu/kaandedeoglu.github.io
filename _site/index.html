@@ -72,7 +72,17 @@
 
 <p>I’ve been working on a small Swift script called <a href="https://github.com/kaandedeoglu/Shark"><strong>Shark</strong></a> for a while. It aims to leverage Swift’s strong type system in order to make image loading type-safe.</p>
 
-<p>Let’s build an example project that shows how to use <strong>Shark</strong>. Then at the end, we’ll shorty discuss how it works.</p>
+<p>Let’s build an example project that shows how to use <strong>Shark</strong>. Then at the end, we’ll shorty discuss how it works.  </p>
+
+<p>Before we begin let’s how image loading looks with and without <strong>Shark</strong>:</p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//Without Shark</span>
+<span class="k">let</span> <span class="n">myImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span><span class="n">twitter_share_checked</span><span class="p">)</span>
+
+<span class="c1">//With Shark</span>
+<span class="k">let</span> <span class="n">myImage</span> <span class="o">=</span> <span class="n">Shark</span><span class="p">.</span><span class="n">SocialIcons</span><span class="p">.</span><span class="n">twitter_share_checked</span><span class="p">.</span><span class="n">image</span></code></pre></div>
+
+<hr />
 
 <h3 id="installing-shark">Installing Shark</h3>
 <p>Clone the repo if you haven’t already. <a href="https://github.com/kaandedeoglu/Shark">https://github.com/kaandedeoglu/Shark</a>. The repo contains the source to the script, and also a compiled executable. There are two ways to setup <strong>Shark</strong>:</p>
@@ -91,6 +101,8 @@
 </blockquote>
 
 <p><em>I’m looking for ways to make the installation easier - any ideas are very welcome</em></p>
+
+<hr />
 
 <h2 id="tutorial">Tutorial</h2>
 
@@ -226,7 +238,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-07-31T12:57:33+03:00">2015</time>. Lazy thoughts, All rights reserved.
+          &copy; <time datetime="2015-07-31T19:46:36+03:00">2015</time>. Lazy thoughts, All rights reserved.
         </small>
       </footer>
     </div>
