@@ -4,13 +4,26 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.io/atom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.io/"/>
- <updated>2015-08-02T17:18:18+03:00</updated>
+ <updated>2015-08-02T19:37:08+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
    <email>kaandedeoglu@me.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Testing feed</title>
+   <link href="http://kaandedeoglu.github.io//2015/08/02/Testing-Feed/"/>
+   <updated>2015-08-02T00:00:00+03:00</updated>
+   <id>http://kaandedeoglu.github.io/2015/08/02/Testing-Feed</id>
+   <content type="html">&lt;h1 id=&quot;testing-feed&quot;&gt;Testing Feed&lt;/h1&gt;
+
+&lt;p&gt;Testing now!&lt;/p&gt;
+
+&lt;hr /&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Shark</title>
