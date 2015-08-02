@@ -4,7 +4,7 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.ioatom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.io"/>
- <updated>2015-08-02T19:45:34+03:00</updated>
+ <updated>2015-08-02T19:46:46+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
@@ -14,7 +14,7 @@
  
  <entry>
    <title>Testing feed</title>
-   <link href="http://kaandedeoglu.github.io//2015/08/02/Testing-Feed/"/>
+   <link href="http://kaandedeoglu.github.io/2015/08/02/Testing-Feed/"/>
    <updated>2015-08-02T00:00:00+03:00</updated>
    <id>http://kaandedeoglu.github.io/2015/08/02/Testing-Feed</id>
    <content type="html">&lt;h1 id=&quot;testing-feed&quot;&gt;Testing Feed&lt;/h1&gt;
@@ -27,7 +27,7 @@
  
  <entry>
    <title>Shark</title>
-   <link href="http://kaandedeoglu.github.io//2015/07/28/Shark/"/>
+   <link href="http://kaandedeoglu.github.io/2015/07/28/Shark/"/>
    <updated>2015-07-28T00:00:00+03:00</updated>
    <id>http://kaandedeoglu.github.io/2015/07/28/Shark</id>
    <content type="html">&lt;blockquote&gt;
@@ -182,7 +182,7 @@
  
  <entry>
    <title>Working Hard</title>
-   <link href="http://kaandedeoglu.github.io//2015/06/17/working-hard/"/>
+   <link href="http://kaandedeoglu.github.io/2015/06/17/working-hard/"/>
    <updated>2015-06-17T00:00:00+03:00</updated>
    <id>http://kaandedeoglu.github.io/2015/06/17/working-hard</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/WorkingHard/working_hard.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
@@ -201,7 +201,7 @@
  
  <entry>
    <title>From JSON to Type-safe objects in Swift</title>
-   <link href="http://kaandedeoglu.github.io//2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/"/>
+   <link href="http://kaandedeoglu.github.io/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/"/>
    <updated>2015-02-20T00:00:00+02:00</updated>
    <id>http://kaandedeoglu.github.io/2015/02/20/From JSON to Type-safe objects in Swift</id>
    <content type="html">&lt;blockquote&gt;
@@ -428,7 +428,7 @@
  
  <entry>
    <title>First Post</title>
-   <link href="http://kaandedeoglu.github.io//2015/02/03/first-post/"/>
+   <link href="http://kaandedeoglu.github.io/2015/02/03/first-post/"/>
    <updated>2015-02-03T00:00:00+02:00</updated>
    <id>http://kaandedeoglu.github.io/2015/02/03/first-post</id>
    <content type="html">&lt;p&gt;This is just a warming up post for the blog. &lt;/p&gt;
