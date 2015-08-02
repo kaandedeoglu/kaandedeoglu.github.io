@@ -68,160 +68,24 @@
   
   <article class="post">
     <h1 class="post-title">
-      <a href="/2015/07/28/Shark/">
-        Shark
+      <a href="/2015/06/17/working-hard/">
+        Working Hard
       </a>
     </h1>
 
-    <time datetime="2015-07-28T00:00:00+03:00" class="post-date">28 Jul 2015</time>
+    <time datetime="2015-06-17T00:00:00+03:00" class="post-date">17 Jun 2015</time>
 
-    <blockquote>
-  <p><em>Note</em>: This is post discusses <strong>Shark</strong>, which uses Swift 2.0 and it’s toolchain. Make sure you’re using the correct toolchain by doing <code>sudo xcode-select -switch /Applications/Xcode-beta.app/Contents/Developer/</code> before you begin.</p>
-</blockquote>
+    <p><img src="http://kaandedeoglu.github.io/assets/WorkingHard/working_hard.png" alt="Breakpoint" /></p>
 
-<p>I’ve been working on a small Swift script called <a href="https://github.com/kaandedeoglu/Shark"><strong>Shark</strong></a> for a while. It aims to leverage Swift’s strong type system in order to make image loading type-safe.</p>
+<p>17k lines of Swift and counting…</p>
 
-<p>Let’s build an example project that shows how to use <strong>Shark</strong>. Then at the end, we’ll shorty discuss how it works.  </p>
+<p>I’m almost at the end of a big project. It’s been a lot of fun.</p>
 
-<p>Before we begin let’s how image loading looks with and without <strong>Shark</strong>:</p>
+<p>Using Swift has worked out great, it allowed me to use abstractions that are nearly impossible to achieve in Objective-C. I’ve yet to have a crash from the test builds sent out to the team. Of course, there’s a lot of refactoring to be done when we actually ship.</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//Without Shark</span>
-<span class="k">let</span> <span class="n">myImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span><span class="n">twitter_share_checked</span><span class="p">)</span>
+<p>Swift 2.0 will make things much better, I’m already thinking of how much repeated code protocol extensions will save me. It was a good first serious project in a new language.</p>
 
-<span class="c1">//With Shark</span>
-<span class="k">let</span> <span class="n">myImage</span> <span class="o">=</span> <span class="n">Shark</span><span class="p">.</span><span class="n">SocialIcons</span><span class="p">.</span><span class="n">twitter_share_checked</span><span class="p">.</span><span class="n">image</span></code></pre></div>
-
-<hr />
-
-<h3 id="installing-shark">Installing Shark</h3>
-<p>Clone the repo if you haven’t already. <a href="https://github.com/kaandedeoglu/Shark">https://github.com/kaandedeoglu/Shark</a>. The repo contains the source to the script, and also a compiled executable. There are two ways to setup <strong>Shark</strong>:</p>
-
-<ul>
-  <li>
-    <p>Copy the <code>Shark.swift</code> file to your project directory. Make sure you don’t add it to your project. <em>Keeping the file in some other location works as well, but will cause big headaches if you’re working in a team</em></p>
-  </li>
-  <li>
-    <p>Move the executable named <code>shark</code> to <em>/usr/local/bin</em>. Since the library is rapidly evolving at the time of writing, doing this every time there’s an update can be mildly annoying.</p>
-  </li>
-</ul>
-
-<blockquote>
-  <p>If you don’t like the sound of adding an unknown executable to your bin folder. You can take a look at the source, and use <code>xcrun -sdk macosx swiftc Shark.swift -o shark</code> to build your own executable.</p>
-</blockquote>
-
-<p><em>I’m looking for ways to make the installation easier - any ideas are very welcome</em></p>
-
-<hr />
-
-<h2 id="tutorial">Tutorial</h2>
-
-<p>Start up Xcode 7. Start by creating an new “Single Screen Application”. For the purposes of this tutorial, I called mine <em>ManyImages</em></p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/1.png" alt="Empty Project" />
-<em>Our empty, boring project</em></p>
-
-<p>Next, we are going to add some images to the project. After all, we called it ManyImages. For the sake of easiness, I just copied the contents of the image assets folder of another project of mine. I suggest you do the same instead of looking for images to include.</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/2.png" alt="Images Added" />
-<em>much image, very pixel, wow</em></p>
-
-<p>I found out that using <strong>Shark</strong>, it’s almost always better to use folders to group images. This way, code completion makes it much easier to find the image you’re looking for.</p>
-
-<blockquote>
-  <p>Use the small + icon at the bottom left of the asset catalogue screen to add new folders</p>
-</blockquote>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/3.png" alt="Organized Images" />
-<em>Organize much?</em></p>
-
-<p>Looks much better. Now to the fun part:</p>
-
-<p>Go to project settings, select your target, and switch to the <code>Build Phases</code> tab. Use the + icon at the top of the page and select <em>New Run Script Phase</em>. This will create a new run script. Drag the newly created <code>Run Script</code> tab to place it below <code>Target Dependencies</code> and above <code>Compile Sources</code>. You can also click on the word <code>Run Script</code> and rename it to <code>Shark</code>. Your screen should look like this when you’re done.</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/4.png" alt="Build Phases" /></p>
-
-<p>Now, expand the run script (now called <em>Shark</em>) tab. <strong>Shark</strong> takes two parameters. The path to the image assets folder, with an extension <code>.xcassets</code>, and an output directory where the generated file will be written.</p>
-
-<p>If you’ve followed step 1 in the installation directions. Then the script will look like:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">xcrun -sdk macosx swift <span class="s2">&quot;${PROJECT_DIR}/Shark.swift&quot;</span> <span class="s2">&quot;${PROJECT_DIR}/ManyImages/Assets.xcassets&quot;</span> <span class="s2">&quot;${PROJECT_DIR}/ManyImages/&quot;</span></code></pre></div>
-
-<p>And if you’ve followed step 2 and moved the shark executable in <em>/usr/local/bin</em>, the script will look like:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">shark <span class="s2">&quot;${PROJECT_DIR}/ManyImages/Assets.xcassets&quot;</span> <span class="s2">&quot;${PROJECT_DIR}/ManyImages/&quot;</span></code></pre></div>
-
-<p>Both cases are displayed below:</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/5.png" alt="Script With Swiftc" />
-<em>Running Shark with the Swift toolchain</em></p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/6.png" alt="Script With Executable" />
-<em>Running Shark with the executable</em></p>
-
-<p>With this setup, we’ve told Xcode to run <strong>Shark</strong> before each build. Open your project folder, and you should see a file called <code>SharkImages.swift</code>! </p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/7.png" alt="Finder" /></p>
-
-<p>Drag and add this file to your project, we are almost there!</p>
-
-<p>Let’s take a look at the generated file:</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/8.png" alt="SharkImages.swift" />
-<em>So simple, but so useful</em></p>
-
-<p>We can see that <em>Shark</em> has created a nested enum for each folder, and a case for each image. </p>
-
-<p>The file has also some <code>Swift 2.0</code> Protocol Extension magic to add a computed property named <code>image</code> to each generated enum, as well as an extension on <code>UIImage</code> itself.</p>
-
-<p>With all this hard work behind us, it’s time to reap the rewards. Switch to <code>ViewController.swift</code>, and let’s try loading an image using <strong>Shark</strong>.</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">imageView</span> <span class="o">=</span> <span class="bp">UIImageView</span><span class="p">(</span><span class="nl">image</span><span class="p">:</span> <span class="n">Shark</span><span class="p">.</span><span class="n">SocialIcons</span><span class="p">.</span><span class="n">twitter_share_checked</span><span class="p">.</span><span class="n">image</span><span class="p">)</span>
-<span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">imageView</span><span class="p">)</span>
-<span class="n">imageView</span><span class="p">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">view</span><span class="p">.</span><span class="n">center</span></code></pre></div>
-
-<p>Notice how we get code completion suggestions from Xcode as we type.</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/9.png" alt="Code Completion 1" /></p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/Shark/10.png" alt="Code Completion 2" />
-<em>Who doesn’t <strong>love</strong> code completion?</em></p>
-
-<p>With our type safe enums, we’ll never make typing mistakes when loading images. Better yet, with good enough grouping and naming, we won’t have to constantly switch to look up image names.</p>
-
-<h2 id="how-it-works">How it works</h2>
-
-<p>Under the cover, what <strong>Shark</strong> does is pretty simple. It walks down the .xcassets folder, creates a model of the folder structure, and uses that to generate a text output which get’s written to a file. </p>
-
-<p>I just want to point out the data type I used to represent the folder structure. I think it’s very neat, and without <code>Swift</code> things might have gotten a lot uglier.</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">enum</span> <span class="n">Resource</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="n">File</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
-        <span class="k">case</span> <span class="n">Directory</span><span class="p">((</span><span class="n">String</span><span class="p">,</span> <span class="p">[</span><span class="n">Resource</span><span class="p">]))</span>
-<span class="p">}</span></code></pre></div>
-
-<p>This concise, 4 line <code>enum</code> is all it took to successfully describe the folder structure. </p>
-
-<p>The fact that we can pattern match on this is plain amazing, and it allows for easy construction of recursive functions. </p>
-
-<p>Consider this function signature, also from the script:</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="n">createEnumDeclarationForResources</span><span class="p">(</span><span class="nl">resources</span><span class="p">:</span> <span class="p">[</span><span class="n">Resource</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">String</span></code></pre></div>
-
-<p>When we think in terms of pattern matching, we automatically split the problem into smaller chunks. The implementation of the above function looks something like this:</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">resultString</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
-<span class="k">for</span> <span class="n">resource</span> <span class="k">in</span> <span class="n">resources</span> <span class="p">{</span>
-	<span class="k">switch</span> <span class="n">resource</span> <span class="p">{</span>
-	<span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">File</span><span class="p">(</span><span class="n">imageName</span><span class="p">)</span><span class="o">:</span>
-	<span class="c1">//A single image file, append a new case, </span>
-	<span class="c1">//resultString += case imageName = &quot;imageName&quot;</span>
-	<span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">Directory</span><span class="p">(</span><span class="n">folderName</span><span class="p">,</span> <span class="n">subResources</span><span class="p">)</span><span class="o">:</span>
-	<span class="c1">//A new directory, append a new enum, </span>
-	<span class="c1">//resultString +=  enum folderName {  createEnumDeclarationForResources(subResources)  }</span>
-  <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<p>The recursive call to <code>createEnumDeclarationForResources</code> is easy to understand thanks to the easy decomposition of .Directory values through pattern matching.</p>
+<p><em>Here’s to many more!</em></p>
 
   </article>
   
@@ -249,7 +113,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-08-02T19:46:46+03:00">2015</time>. Lazy thoughts, All rights reserved.
+          &copy; <time datetime="2015-08-02T19:56:24+03:00">2015</time>. Lazy thoughts, All rights reserved.
         </small>
       </footer>
     </div>
