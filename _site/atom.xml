@@ -4,7 +4,7 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.ioatom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.io"/>
- <updated>2015-08-02T19:56:24+03:00</updated>
+ <updated>2015-08-03T09:47:36+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
@@ -25,7 +25,7 @@
 
 &lt;p&gt;Let’s build an example project that shows how to use &lt;strong&gt;Shark&lt;/strong&gt;. Then at the end, we’ll shorty discuss how it works.  &lt;/p&gt;
 
-&lt;p&gt;Before we begin let’s how image loading looks with and without &lt;strong&gt;Shark&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Before we begin let’s see how image loading looks with and without &lt;strong&gt;Shark&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Without Shark&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;UIImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;named&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_share_checked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
