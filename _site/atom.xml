@@ -4,13 +4,26 @@
  <title>Lazy Thoughts</title>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.ioatom.xml" rel="self"/>
  <link href="http://kaandedeoglu.github.iohttp://kaandedeoglu.github.io"/>
- <updated>2015-08-04T19:05:32+03:00</updated>
+ <updated>2015-08-05T02:25:28+03:00</updated>
  <id>http://kaandedeoglu.github.io</id>
  <author>
    <name>Kaan Dedeoglu</name>
    <email>kaandedeoglu@me.com</email>
  </author>
 
+ 
+ <entry>
+   <title>N'oluyo TV Guide</title>
+   <link href="http://kaandedeoglu.github.io/2015/08/04/Noluyo-TV-Guide/"/>
+   <updated>2015-08-04T00:00:00+03:00</updated>
+   <id>http://kaandedeoglu.github.io/2015/08/04/Noluyo-TV-Guide</id>
+   <content type="html">&lt;p&gt;Here’s a video of the TV Guide I built for the last app I built, it’s a Turkish Beamly/Viggle, a tv companion app about shows and movies. &lt;/p&gt;
+
+&lt;p&gt;I really like how the whole view turned out. It uses a UITableView, UIView spring animations, and a lot of view shuffling and custom logic. Let me know if you’re interested and I’ll make a longer post explaining how it all works..&lt;/p&gt;
+
+&lt;iframe width=&quot;450&quot; height=&quot;600&quot; src=&quot;https://www.youtube.com/embed/aCr5gy_Vs8o&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Shark</title>
