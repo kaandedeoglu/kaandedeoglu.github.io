@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title></title>
+		<description></description>		
+		<link>http://kaandedeoglu.github.io</link>
+		<atom:link href="http://kaandedeoglu.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Shark</title>
+				        
+				
+					<description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: This is post discusses &lt;strong&gt;Shark&lt;/strong&gt;, which uses Swift 2.0 and it’s toolchain. Make sure you’re using the correct toolchain by doing &lt;code&gt;sudo xcode-select -switch /Applications/Xcode-beta.app/Contents/Developer/&lt;/code&gt; before you begin.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+				
+				<pubDate>Tue, 28 Jul 2015 00:00:00 +0300</pubDate>
+				<link>http://kaandedeoglu.github.io/2015/07/28/Shark/</link>
+				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/07/28/Shark/</guid>
+			</item>
+		
+			<item>
+				<title>Working Hard</title>
+				        
+				
+					<description>&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/WorkingHard/working_hard.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Wed, 17 Jun 2015 00:00:00 +0300</pubDate>
+				<link>http://kaandedeoglu.github.io/2015/06/17/working-hard/</link>
+				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/06/17/working-hard/</guid>
+			</item>
+		
+			<item>
+				<title>From JSON to Type-safe objects in Swift</title>
+				        
+				
+					<description>&lt;blockquote&gt;
+  &lt;p&gt;This post uses Swift 1.2 beta and the Swift 1.2 branches for both Alamofire and ObjectMapper&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+				
+				<pubDate>Fri, 20 Feb 2015 00:00:00 +0200</pubDate>
+				<link>http://kaandedeoglu.github.io/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/</link>
+				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/</guid>
+			</item>
+		
+			<item>
+				<title>First Post</title>
+				        
+				
+					<description>&lt;p&gt;This is just a warming up post for the blog. &lt;/p&gt;
+
+</description>
+				
+				<pubDate>Tue, 03 Feb 2015 00:00:00 +0200</pubDate>
+				<link>http://kaandedeoglu.github.io/2015/02/03/first-post/</link>
+				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/02/03/first-post/</guid>
+			</item>
+		
+	</channel>
+</rss>

@@ -6,7 +6,7 @@ relative_permalinks: true
 title:            Lazy Thoughts
 tagline:          
 url:              http://kaandedeoglu.github.io
-paginate:         1
+paginate:         2
 baseurl:          /
 author:
   name:           Kaan Dedeoglu
@@ -18,7 +18,7 @@ pages_list:
   Home: '/'       
   About: '/about'
   Archive: '/archive'
-  Feed: '/atom.xml'
+  Feed: '/feed.xml'
 
 # Custom vars
 version:          1.0.0
