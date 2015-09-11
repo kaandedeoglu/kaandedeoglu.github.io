@@ -65,6 +65,237 @@
   
   <article class="post">
     <h1 class="post-title">
+      <a href="/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/">
+        From JSON to Type-safe objects in Swift
+      </a>
+    </h1>
+
+    <time datetime="2015-02-20T00:00:00+02:00" class="post-date">20 Feb 2015</time>
+
+    <blockquote>
+  <p>This post uses Swift 1.2 beta and the Swift 1.2 branches for both Alamofire and ObjectMapper</p>
+</blockquote>
+
+<p>I’m a strong believer in type-safety. I sleep better at night if I know my JSON responses are returned as type-safe objects rather than dictionaries. It makes subtle typing bugs less likely, refactoring fields is easy and error-free and passing/storing data is much nicer. Did I mention that it is also safe? :)</p>
+
+<p>I’ve recently started a new project where I was faced with this problem. After searching for a solution for a few days, I wasn’t really satisfied with anything I found.</p>
+
+<p>I finally came up with a solution that I think is easy to use, flexible and doesn’t get into way too much. Of course, the effort and creativity it took is minimal compared to the libraries I used, namely <a href="https://github.com/Alamofire/Alamofire">Alamofire</a> and <a href="https://github.com/Hearst-DD/ObjectMapper">ObjectMapper</a>. Sometimes it feels nice to stand on the shoulders of giants. </p>
+
+<hr />
+
+<h2 id="the-server-side">The Server Side</h2>
+
+<p>First let’s start a simple web server that serves a static JSON. For the purposes of this post, I used Go, which is very convenient for putting something out there quickly without huge project templates or external dependencies.</p>
+
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="c1">//main.go</span>
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;encoding/json&quot;</span>
+  <span class="s">&quot;net/http&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">FirstName</span> <span class="kt">string</span> <span class="s">`json:&quot;firsName&quot;`</span>
+  <span class="nx">LastName</span> <span class="kt">string</span> <span class="s">`json:&quot;lastName&quot;`</span>
+  <span class="nx">Age</span> <span class="kt">int</span> <span class="s">`json:&quot;age&quot;`</span>
+  <span class="nx">AccountTypes</span> <span class="p">[]</span><span class="kt">string</span> <span class="s">`json:&quot;accountTypes&quot;`</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Crew</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">Members</span> <span class="p">[]</span><span class="nx">User</span> <span class="s">`json:&quot;members&quot;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">http</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+  <span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:3000&quot;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">user</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">user1</span> <span class="o">:=</span> <span class="nx">User</span><span class="p">{</span><span class="s">&quot;Kaan&quot;</span><span class="p">,</span> <span class="s">&quot;Dedeoglu&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Facebook&quot;</span><span class="p">,</span> <span class="s">&quot;Twitter&quot;</span><span class="p">,</span> <span class="s">&quot;Instagram&quot;</span><span class="p">}}</span>
+  <span class="nx">user2</span> <span class="o">:=</span> <span class="nx">User</span><span class="p">{</span><span class="s">&quot;Muratcan&quot;</span><span class="p">,</span> <span class="s">&quot;Oguz&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Instagram&quot;</span><span class="p">}}</span>
+  <span class="nx">crew</span> <span class="o">:=</span> <span class="nx">Crew</span><span class="p">{[]</span><span class="nx">User</span><span class="p">{</span><span class="nx">user1</span><span class="p">,</span> <span class="nx">user2</span><span class="p">}}</span>
+
+  <span class="nx">result</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">crew</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+
+  <span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+  <span class="nx">w</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>I think the code is pretty self-explanatory, even if you’ve never coded in Go. Now let’s start the server. Make sure the file is in your <code>GOPATH</code> under a folder called <em>staticJSON</em>. Run the following commands from the terminal</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">go build
+./staticJSON</code></pre></div>
+
+<p>Your server should be up and running! It generates the following JSON response when we hit <em>http://localhost:3000</em></p>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;members&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaan&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Dedeoglu&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+      <span class="nt">&quot;accountTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Facebook&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Twitter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Instagram&quot;</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Muratcan&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Oguz&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+      <span class="nt">&quot;accountTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Instagram&quot;</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
+
+<hr />
+
+<h2 id="the-swift-side">The Swift Side</h2>
+
+<blockquote>
+  <p>Since I’m also targeting iOS 7, my only option to add Alamofire/ObjectMapper to the project is by manually adding the source files. This approach is fine but it loses the namespaces, so the method <code>request</code> would become <code>Alamofire.request</code> if you’re adding the library as a dynamic framework.</p>
+</blockquote>
+
+<p>Make sure you’ve imported both Alamofire and ObjectMapper into your project.</p>
+
+<p>Alamofire uses the <code>Serializer</code> type for encoding response data into different formats. Here’s its definition:</p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">typealias</span> <span class="n">Serializer</span> <span class="o">=</span> <span class="p">(</span><span class="bp">NSURLRequest</span><span class="p">,</span> <span class="bp">NSHTTPURLResponse</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSData</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">AnyObject</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span></code></pre></div>
+
+<p>There are a few serializers that are included in the library:</p>
+
+<p><code>responseDataSerializer</code> — Return the data as is</p>
+
+<p><code>stringResponseSerializer</code> — Return the data as a string</p>
+
+<p><code>JSONResponseSerializer</code> — Return the data as a JSON object</p>
+
+<p><code>propertyListResponseSerializer</code> — Return the data as a property list object</p>
+
+<p>It is worth noting that as a client you never use these directly, instead, Alamofire comes with response methods that uses these. Here’s a list straight from the documentation:</p>
+
+<p><code>response()</code></p>
+
+<p><code>responseString(encoding: NSStringEncoding)</code></p>
+
+<p><code>responseJSON(options: NSJSONReadingOptions)</code></p>
+
+<p><code>responsePropertyList(options: NSPropertyListReadOptions)</code></p>
+
+<p>With this knowledge, let’s get to work. Our plan is to create a new <code>Serializer</code> that will map the received JSON to our type-safe class instances. Create a file called <code>AlamofireExtensions.swift</code></p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//AlamofireExtensions.swift</span>
+<span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="k">extension</span> <span class="n">Request</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="k">func</span> <span class="n">responseObject</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">Mappable</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSURLRequest</span><span class="p">,</span> <span class="bp">NSHTTPURLResponse</span><span class="o">?</span><span class="p">,</span> <span class="n">T</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nl">serializer</span><span class="p">:</span> <span class="n">Serializer</span> <span class="o">=</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">let</span> <span class="n">JSONSerializer</span> <span class="o">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">JSONResponseSerializer</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">AllowFragments</span><span class="p">)</span>
+            <span class="k">let</span> <span class="p">(</span><span class="nl">JSON</span><span class="p">:</span> <span class="n">AnyObject</span><span class="o">?</span><span class="p">,</span> <span class="n">JSONError</span><span class="p">)</span> <span class="o">=</span> <span class="n">JSONSerializer</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span> <span class="o">!=</span> <span class="nb">nil</span> <span class="o">&amp;&amp;</span> <span class="n">JSON</span> <span class="o">!=</span> <span class="nb">nil</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="k">let</span> <span class="nl">object</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="n">Mapper</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">AnyObject</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="s">&quot;Mapping&quot;</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSLocalizedDescriptionKey</span><span class="p">:</span><span class="s">&quot;Error mapping JSON to class&quot;</span><span class="p">]))</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="n">JSONError</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="n">response</span><span class="p">(</span><span class="nl">serializer</span><span class="p">:</span> <span class="n">serializer</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">object</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+            <span class="n">completionHandler</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">object</span> <span class="kt">as</span><span class="o">?</span> <span class="n">T</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Here we create a generic function <code>responseObject</code> that does the magic. We create a <code>Serializer</code> that parses the data into a JSON object - and then use it to create the required instance of type <strong>T</strong>. </p>
+
+<p>The Mappable protocol is coming from <code>ObjectMapper</code>, let’s see it in action.</p>
+
+<p>Create <code>JSONModels.swift</code> and add the following code:</p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//JSONModels.swift</span>
+<span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="k">class</span> <span class="nl">User</span><span class="p">:</span> <span class="n">Mappable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">var</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">var</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span>
+    <span class="k">var</span> <span class="nl">accountTypes</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span><span class="o">?</span>
+    
+    <span class="n">required</span> <span class="k">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+    
+    <span class="k">func</span> <span class="n">mapping</span><span class="p">(</span><span class="nl">map</span><span class="p">:</span> <span class="n">Map</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">firstName</span> <span class="o">&lt;=</span> <span class="n">map</span><span class="p">[</span><span class="s">&quot;firstName&quot;</span><span class="p">]</span>
+        <span class="n">lastName</span> <span class="o">&lt;=</span> <span class="n">map</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span>
+        <span class="n">age</span> <span class="o">&lt;=</span> <span class="n">map</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span>
+        <span class="n">accountTypes</span> <span class="o">&lt;=</span> <span class="n">map</span><span class="p">[</span><span class="s">&quot;accountTypes&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Crew</span><span class="p">:</span> <span class="n">Mappable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">members</span><span class="p">:</span> <span class="p">[</span><span class="n">User</span><span class="p">]</span><span class="o">?</span>
+    
+    <span class="n">required</span> <span class="k">init</span><span class="p">(){}</span>
+    
+    <span class="k">func</span> <span class="n">mapping</span><span class="p">(</span><span class="nl">map</span><span class="p">:</span> <span class="n">Map</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">members</span> <span class="o">&lt;=</span> <span class="n">map</span><span class="p">[</span><span class="s">&quot;members&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>To model the responses, all we have to do is to create a class conforming to the <code>Mappable</code> protocol with the appropriate fields, and implement the method called <code>mapping</code>. It is dead simple: all you have to do is match every property name with the appropriate JSON field name.</p>
+
+<hr />
+
+<p>Let’s try it out!</p>
+
+<p>Place this code in a <code>viewDidLoad</code>:</p>
+
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">request</span><span class="p">(</span><span class="bp">NSURLRequest</span><span class="p">(</span><span class="nl">URL</span><span class="p">:</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://localhost:3000&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">)).</span><span class="n">validate</span><span class="p">().</span><span class="n">responseObject</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="nl">object</span><span class="p">:</span> <span class="n">Crew</span><span class="o">?</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">crew</span> <span class="o">=</span> <span class="n">object</span><span class="p">,</span> <span class="k">let</span> <span class="n">members</span> <span class="o">=</span> <span class="n">crew</span><span class="p">.</span><span class="n">members</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">user</span> <span class="k">in</span> <span class="n">members</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(user.firstName) \(user.lastName)&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Notice that we are declaring object explicitly as of type <code>Crew?</code>. This alone sets the type constraint T on the <code>responseObject</code> method and our <code>Serializer</code> maps to a Crew instance.</p>
+
+<p>Run the application and you should see the following output in the console:</p>
+
+<blockquote>
+  <p>Kaan Dedeoglu</p>
+
+  <p>Muratcan Oguz</p>
+</blockquote>
+
+<p>Putting a breakpoint will reveal that everything went as expected.</p>
+
+<p><img src="http://kaandedeoglu.github.io/assets/JSONMapping/image.png" alt="Breakpoint" /></p>
+
+<hr />
+
+<h2 id="limitations">Limitations</h2>
+
+<p>One thing that didn’t work out was using <code>Mappable</code> structs instead of classes. This is due to the fact that <code>Serializer</code>’s are expected to return <code>AnyObject</code> as its result, and structs are not <code>AnyObject</code>, which is a shame since structs are the perfect value types.</p>
+
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
       <a href="/2015/02/03/first-post/">
         First Post
       </a>
@@ -102,7 +333,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-09-11T21:50:09+03:00">2015</time>. Lazy thoughts, All rights reserved.
+          &copy; <time datetime="2015-09-11T21:53:45+03:00">2015</time>. Lazy thoughts, All rights reserved.
         </small>
       </footer>
     </div>
