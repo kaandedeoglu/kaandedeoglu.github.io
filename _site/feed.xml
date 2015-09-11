@@ -3,29 +3,12 @@
 <generator uri="http://jekyllrb.com" version="2.4.0">Jekyll</generator>
 <link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
-<updated>2015-09-11T21:53:45+03:00</updated>
+<updated>2015-09-11T21:56:27+03:00</updated>
 <id>http://kaandedeoglu.github.io//</id>
 <author>
 <name>Kaan Dedeoglu</name>
 <email>kaandedeoglu@me.com</email>
 </author>
-<entry>
-<title>N’oluyo TV Guide Again</title>
-<link href="http://kaandedeoglu.github.io//2015/09/11/Noluyo-TV-Guide_again/" rel="alternate" type="text/html" title="N&#39;oluyo TV Guide Again" />
-<published>2015-09-11T00:00:00+03:00</published>
-<updated>2015-09-11T00:00:00+03:00</updated>
-<id>http://kaandedeoglu.github.io//2015/09/11/Noluyo-TV-Guide_again</id>
-<content type="html" xml:base="http://kaandedeoglu.github.io//2015/09/11/Noluyo-TV-Guide_again/">&lt;p&gt;Here’s a video of the TV Guide I built for the last app I worked on. It’s a Turkish Beamly/Viggle, a TV companion app about shows and movies. &lt;/p&gt;
-
-&lt;p&gt;I really like how the whole view turned out. It uses a UITableView, UIView spring animations, and a lot of view shuffling and custom logic. Let me know if you’re interested and I’ll make a longer post explaining how it all works..&lt;/p&gt;
-
-&lt;iframe width=&quot;450&quot; height=&quot;600&quot; src=&quot;https://www.youtube.com/embed/aCr5gy_Vs8o&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</content>
-<category term="iOS," />
-<category term="Animation," />
-<category term="Interface" />
-<summary>Here’s a video of the TV Guide I built for the last app I worked on. It’s a Turkish Beamly/Viggle, a TV companion app about shows and movies. </summary>
-</entry>
 <entry>
 <title>N’oluyo TV Guide</title>
 <link href="http://kaandedeoglu.github.io//2015/08/04/Noluyo-TV-Guide/" rel="alternate" type="text/html" title="N&#39;oluyo TV Guide" />
