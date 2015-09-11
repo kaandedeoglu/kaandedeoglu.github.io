@@ -1,79 +1,484 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
-	<channel>
-		<title></title>
-		<description></description>		
-		<link>http://kaandedeoglu.github.io</link>
-		<atom:link href="http://kaandedeoglu.github.io/feed.xml" rel="self" type="application/rss+xml" />
-		
-			<item>
-				<title>N&#39;oluyo TV Guide</title>
-				        
-				
-					<description>&lt;p&gt;Here’s a video of the TV Guide I built for the last app I worked on. It’s a Turkish Beamly/Viggle, a TV companion app about shows and movies. &lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="2.5.3">Jekyll</generator>
+<link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
+<link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
+<updated>2015-09-11T11:28:23+03:00</updated>
+<id>http://kaandedeoglu.github.io//</id>
+<author>
+<name>Kaan Dedeoglu</name>
+<email>kaandedeoglu@me.com</email>
+</author>
+<entry>
+<title>N’oluyo TV Guide</title>
+<link href="http://kaandedeoglu.github.io//2015/08/04/Noluyo-TV-Guide/" rel="alternate" type="text/html" title="N&#39;oluyo TV Guide" />
+<published>2015-08-04T00:00:00+03:00</published>
+<updated>2015-08-04T00:00:00+03:00</updated>
+<id>http://kaandedeoglu.github.io//2015/08/04/Noluyo-TV-Guide</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2015/08/04/Noluyo-TV-Guide/">&lt;p&gt;Here’s a video of the TV Guide I built for the last app I worked on. It’s a Turkish Beamly/Viggle, a TV companion app about shows and movies. &lt;/p&gt;
 
-</description>
-				
-				<pubDate>Tue, 04 Aug 2015 00:00:00 +0300</pubDate>
-				<link>http://kaandedeoglu.github.io/2015/08/04/Noluyo-TV-Guide/</link>
-				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/08/04/Noluyo-TV-Guide/</guid>
-			</item>
-		
-			<item>
-				<title>Shark</title>
-				        
-				
-					<description>&lt;blockquote&gt;
+&lt;p&gt;I really like how the whole view turned out. It uses a UITableView, UIView spring animations, and a lot of view shuffling and custom logic. Let me know if you’re interested and I’ll make a longer post explaining how it all works..&lt;/p&gt;
+
+&lt;iframe width=&quot;450&quot; height=&quot;600&quot; src=&quot;https://www.youtube.com/embed/aCr5gy_Vs8o&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</content>
+<category term="iOS," />
+<category term="Animation," />
+<category term="Interface" />
+<summary>Here’s a video of the TV Guide I built for the last app I worked on. It’s a Turkish Beamly/Viggle, a TV companion app about shows and movies. </summary>
+</entry>
+<entry>
+<title>Shark</title>
+<link href="http://kaandedeoglu.github.io//2015/07/28/Shark/" rel="alternate" type="text/html" title="Shark" />
+<published>2015-07-28T00:00:00+03:00</published>
+<updated>2015-07-28T00:00:00+03:00</updated>
+<id>http://kaandedeoglu.github.io//2015/07/28/Shark</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2015/07/28/Shark/">&lt;blockquote&gt;
   &lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: This is post discusses &lt;strong&gt;Shark&lt;/strong&gt;, which uses Swift 2.0 and it’s toolchain. Make sure you’re using the correct toolchain by doing &lt;code&gt;sudo xcode-select -switch /Applications/Xcode-beta.app/Contents/Developer/&lt;/code&gt; before you begin.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-</description>
-				
-				<pubDate>Tue, 28 Jul 2015 00:00:00 +0300</pubDate>
-				<link>http://kaandedeoglu.github.io/2015/07/28/Shark/</link>
-				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/07/28/Shark/</guid>
-			</item>
-		
-			<item>
-				<title>Working Hard</title>
-				        
-				
-					<description>&lt;p&gt;&lt;img src=&quot;http://kaandedeoglu.github.io/assets/WorkingHard/working_hard.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been working on a small Swift script called &lt;a href=&quot;https://github.com/kaandedeoglu/Shark&quot;&gt;&lt;strong&gt;Shark&lt;/strong&gt;&lt;/a&gt; for a while. It aims to leverage Swift’s strong type system in order to make image loading type-safe.&lt;/p&gt;
 
-</description>
-				
-				<pubDate>Wed, 17 Jun 2015 00:00:00 +0300</pubDate>
-				<link>http://kaandedeoglu.github.io/2015/06/17/working-hard/</link>
-				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/06/17/working-hard/</guid>
-			</item>
-		
-			<item>
-				<title>From JSON to Type-safe objects in Swift</title>
-				        
-				
-					<description>&lt;blockquote&gt;
+&lt;p&gt;Let’s build an example project that shows how to use &lt;strong&gt;Shark&lt;/strong&gt;. Then at the end, we’ll shorty discuss how it works.  &lt;/p&gt;
+
+&lt;p&gt;Before we begin let’s see how image loading looks with and without &lt;strong&gt;Shark&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+//Without Shark
+let myImage = UIImage(named:twitter_share_checked)&lt;/p&gt;
+
+&lt;p&gt;//With Shark
+let myImage = Shark.SocialIcons.twitter_share_checked.image&lt;/p&gt;
+
+&lt;p&gt;{% endhighlight %}&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;installing-shark&quot;&gt;Installing Shark&lt;/h3&gt;
+&lt;p&gt;Clone the repo if you haven’t already. &lt;a href=&quot;https://github.com/kaandedeoglu/Shark&quot;&gt;https://github.com/kaandedeoglu/Shark&lt;/a&gt;. The repo contains the source to the script, and also a compiled executable. There are two ways to setup &lt;strong&gt;Shark&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy the &lt;code&gt;Shark.swift&lt;/code&gt; file to your project directory. Make sure you don’t add it to your project. &lt;em&gt;Keeping the file in some other location works as well, but will cause big headaches if you’re working in a team&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Move the executable named &lt;code&gt;shark&lt;/code&gt; to &lt;em&gt;/usr/local/bin&lt;/em&gt;. Since the library is rapidly evolving at the time of writing, doing this every time there’s an update can be mildly annoying.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you don’t like the sound of adding an unknown executable to your bin folder. You can take a look at the source, and use &lt;code&gt;xcrun -sdk macosx swiftc Shark.swift -o shark&lt;/code&gt; to build your own executable.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;I’m looking for ways to make the installation easier - any ideas are very welcome&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;tutorial&quot;&gt;Tutorial&lt;/h2&gt;
+
+&lt;p&gt;Start up Xcode 7. Start by creating an new “Single Screen Application”. For the purposes of this tutorial, I called mine &lt;em&gt;ManyImages&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/1.png&quot; alt=&quot;Empty Project&quot; /&gt;
+&lt;em&gt;Our empty, boring project&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to add some images to the project. After all, we called it ManyImages. For the sake of easiness, I just copied the contents of the image assets folder of another project of mine. I suggest you do the same instead of looking for images to include.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/2.png&quot; alt=&quot;Images Added&quot; /&gt;
+&lt;em&gt;much image, very pixel, wow&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I found out that using &lt;strong&gt;Shark&lt;/strong&gt;, it’s almost always better to use folders to group images. This way, code completion makes it much easier to find the image you’re looking for.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Use the small + icon at the bottom left of the asset catalogue screen to add new folders&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/3.png&quot; alt=&quot;Organized Images&quot; /&gt;
+&lt;em&gt;Organize much?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Looks much better. Now to the fun part:&lt;/p&gt;
+
+&lt;p&gt;Go to project settings, select your target, and switch to the &lt;code&gt;Build Phases&lt;/code&gt; tab. Use the + icon at the top of the page and select &lt;em&gt;New Run Script Phase&lt;/em&gt;. This will create a new run script. Drag the newly created &lt;code&gt;Run Script&lt;/code&gt; tab to place it below &lt;code&gt;Target Dependencies&lt;/code&gt; and above &lt;code&gt;Compile Sources&lt;/code&gt;. You can also click on the word &lt;code&gt;Run Script&lt;/code&gt; and rename it to &lt;code&gt;Shark&lt;/code&gt;. Your screen should look like this when you’re done.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/4.png&quot; alt=&quot;Build Phases&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, expand the run script (now called &lt;em&gt;Shark&lt;/em&gt;) tab. &lt;strong&gt;Shark&lt;/strong&gt; takes two parameters. The path to the image assets folder, with an extension &lt;code&gt;.xcassets&lt;/code&gt;, and an output directory where the generated file will be written.&lt;/p&gt;
+
+&lt;p&gt;If you’ve followed step 1 in the installation directions. Then the script will look like:&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+xcrun -sdk macosx swift “${PROJECT_DIR}/Shark.swift” “${PROJECT_DIR}/ManyImages/Assets.xcassets” “${PROJECT_DIR}/ManyImages/”
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;And if you’ve followed step 2 and moved the shark executable in &lt;em&gt;/usr/local/bin&lt;/em&gt;, the script will look like:&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+shark “${PROJECT_DIR}/ManyImages/Assets.xcassets” “${PROJECT_DIR}/ManyImages/”
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Both cases are displayed below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/5.png&quot; alt=&quot;Script With Swiftc&quot; /&gt;
+&lt;em&gt;Running Shark with the Swift toolchain&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/6.png&quot; alt=&quot;Script With Executable&quot; /&gt;
+&lt;em&gt;Running Shark with the executable&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;With this setup, we’ve told Xcode to run &lt;strong&gt;Shark&lt;/strong&gt; before each build. Open your project folder, and you should see a file called &lt;code&gt;SharkImages.swift&lt;/code&gt;! &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/7.png&quot; alt=&quot;Finder&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drag and add this file to your project, we are almost there!&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at the generated file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/8.png&quot; alt=&quot;SharkImages.swift&quot; /&gt;
+&lt;em&gt;So simple, but so useful&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that &lt;em&gt;Shark&lt;/em&gt; has created a nested enum for each folder, and a case for each image. &lt;/p&gt;
+
+&lt;p&gt;The file has also some &lt;code&gt;Swift 2.0&lt;/code&gt; Protocol Extension magic to add a computed property named &lt;code&gt;image&lt;/code&gt; to each generated enum, as well as an extension on &lt;code&gt;UIImage&lt;/code&gt; itself.&lt;/p&gt;
+
+&lt;p&gt;With all this hard work behind us, it’s time to reap the rewards. Switch to &lt;code&gt;ViewController.swift&lt;/code&gt;, and let’s try loading an image using &lt;strong&gt;Shark&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+let imageView = UIImageView(image: Shark.SocialIcons.twitter_share_checked.image)
+view.addSubview(imageView)
+imageView.center = view.center
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Notice how we get code completion suggestions from Xcode as we type.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/9.png&quot; alt=&quot;Code Completion 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/Shark/10.png&quot; alt=&quot;Code Completion 2&quot; /&gt;
+&lt;em&gt;Who doesn’t &lt;strong&gt;love&lt;/strong&gt; code completion?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;With our type safe enums, we’ll never make typing mistakes when loading images. Better yet, with good enough grouping and naming, we won’t have to constantly switch to look up image names.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+
+&lt;p&gt;Under the cover, what &lt;strong&gt;Shark&lt;/strong&gt; does is pretty simple. It walks down the .xcassets folder, creates a model of the folder structure, and uses that to generate a text output which get’s written to a file. &lt;/p&gt;
+
+&lt;p&gt;I just want to point out the data type I used to represent the folder structure. I think it’s very neat, and without &lt;code&gt;Swift&lt;/code&gt; things might have gotten a lot uglier.&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+enum Resource {
+        case File(String)
+        case Directory((String, [Resource]))
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;This concise, 4 line &lt;code&gt;enum&lt;/code&gt; is all it took to successfully describe the folder structure. &lt;/p&gt;
+
+&lt;p&gt;The fact that we can pattern match on this is plain amazing, and it allows for easy construction of recursive functions. &lt;/p&gt;
+
+&lt;p&gt;Consider this function signature, also from the script:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+func createEnumDeclarationForResources(resources: [Resource]) -&amp;gt; String
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;When we think in terms of pattern matching, we automatically split the problem into smaller chunks. The implementation of the above function looks something like this:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+var resultString = “”
+for resource in resources {
+	switch resource {
+	case let .File(imageName):
+	//A single image file, append a new case, 
+	//resultString += case imageName = “imageName”
+	case let .Directory(folderName, subResources):
+	//A new directory, append a new enum, 
+	//resultString +=  enum folderName {  createEnumDeclarationForResources(subResources)  }
+  }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;The recursive call to &lt;code&gt;createEnumDeclarationForResources&lt;/code&gt; is easy to understand thanks to the easy decomposition of .Directory values through pattern matching.&lt;/p&gt;
+</content>
+<category term="Swift," />
+<category term="Xcode" />
+<summary>  Note: This is post discusses Shark, which uses Swift 2.0 and it’s toolchain. Make sure you’re using the correct toolchain by doing sudo xcode-select -switch /Applications/Xcode-beta.app/Contents/Developer/ before you begin.</summary>
+</entry>
+<entry>
+<title>Working Hard</title>
+<link href="http://kaandedeoglu.github.io//2015/06/17/working-hard/" rel="alternate" type="text/html" title="Working Hard" />
+<published>2015-06-17T00:00:00+03:00</published>
+<updated>2015-06-17T00:00:00+03:00</updated>
+<id>http://kaandedeoglu.github.io//2015/06/17/working-hard</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2015/06/17/working-hard/">&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/WorkingHard/working_hard.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;17k lines of Swift and counting…&lt;/p&gt;
+
+&lt;p&gt;I’m almost at the end of a big project. It’s been a lot of fun.&lt;/p&gt;
+
+&lt;p&gt;Using Swift has worked out great, it allowed me to use abstractions that are nearly impossible to achieve in Objective-C. I’ve yet to have a crash from the test builds sent out to the team. Of course, there’s a lot of refactoring to be done when we actually ship.&lt;/p&gt;
+
+&lt;p&gt;Swift 2.0 will make things much better, I’m already thinking of how much repeated code protocol extensions will save me. It was a good first serious project in a new language.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Here’s to many more!&lt;/em&gt;&lt;/p&gt;
+</content>
+<category term="Swift," />
+<category term="Xcode" />
+<summary></summary>
+</entry>
+<entry>
+<title>From JSON to Type-safe objects in Swift</title>
+<link href="http://kaandedeoglu.github.io//2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/" rel="alternate" type="text/html" title="From JSON to Type-safe objects in Swift" />
+<published>2015-02-20T00:00:00+02:00</published>
+<updated>2015-02-20T00:00:00+02:00</updated>
+<id>http://kaandedeoglu.github.io//2015/02/20/From JSON to Type-safe objects in Swift</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/">&lt;blockquote&gt;
   &lt;p&gt;This post uses Swift 1.2 beta and the Swift 1.2 branches for both Alamofire and ObjectMapper&lt;/p&gt;
 &lt;/blockquote&gt;
 
-</description>
-				
-				<pubDate>Fri, 20 Feb 2015 00:00:00 +0200</pubDate>
-				<link>http://kaandedeoglu.github.io/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/</link>
-				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/02/20/From%20JSON%20to%20Type-safe%20objects%20in%20Swift/</guid>
-			</item>
-		
-			<item>
-				<title>First Post</title>
-				        
-				
-					<description>&lt;p&gt;This is just a warming up post for the blog. &lt;/p&gt;
+&lt;p&gt;I’m a strong believer in type-safety. I sleep better at night if I know my JSON responses are returned as type-safe objects rather than dictionaries. It makes subtle typing bugs less likely, refactoring fields is easy and error-free and passing/storing data is much nicer. Did I mention that it is also safe? :)&lt;/p&gt;
 
-</description>
-				
-				<pubDate>Tue, 03 Feb 2015 00:00:00 +0200</pubDate>
-				<link>http://kaandedeoglu.github.io/2015/02/03/first-post/</link>
-				<guid isPermaLink="true">http://kaandedeoglu.github.io/2015/02/03/first-post/</guid>
-			</item>
-		
-	</channel>
-</rss>
+&lt;p&gt;I’ve recently started a new project where I was faced with this problem. After searching for a solution for a few days, I wasn’t really satisfied with anything I found.&lt;/p&gt;
+
+&lt;p&gt;I finally came up with a solution that I think is easy to use, flexible and doesn’t get into way too much. Of course, the effort and creativity it took is minimal compared to the libraries I used, namely &lt;a href=&quot;https://github.com/Alamofire/Alamofire&quot;&gt;Alamofire&lt;/a&gt; and &lt;a href=&quot;https://github.com/Hearst-DD/ObjectMapper&quot;&gt;ObjectMapper&lt;/a&gt;. Sometimes it feels nice to stand on the shoulders of giants. &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-server-side&quot;&gt;The Server Side&lt;/h2&gt;
+
+&lt;p&gt;First let’s start a simple web server that serves a static JSON. For the purposes of this post, I used Go, which is very convenient for putting something out there quickly without huge project templates or external dependencies.&lt;/p&gt;
+
+&lt;p&gt;{% highlight go %}
+//main.go
+package main&lt;/p&gt;
+
+&lt;p&gt;import (
+  “encoding/json”
+  “net/http”
+)&lt;/p&gt;
+
+&lt;p&gt;type User struct {
+  FirstName string &lt;code&gt;json:&quot;firsName&quot;&lt;/code&gt;
+  LastName string &lt;code&gt;json:&quot;lastName&quot;&lt;/code&gt;
+  Age int &lt;code&gt;json:&quot;age&quot;&lt;/code&gt;
+  AccountTypes []string &lt;code&gt;json:&quot;accountTypes&quot;&lt;/code&gt;
+}&lt;/p&gt;
+
+&lt;p&gt;type Crew struct {
+  Members []User &lt;code&gt;json:&quot;members&quot;&lt;/code&gt;
+}&lt;/p&gt;
+
+&lt;p&gt;func main() {
+  http.HandleFunc(“/”, user)
+  http.ListenAndServe(“:3000”, nil)
+}&lt;/p&gt;
+
+&lt;p&gt;func user(w http.ResponseWriter, r *http.Request) {
+  user1 := User{“Kaan”, “Dedeoglu”, 26, []string{“Facebook”, “Twitter”, “Instagram”}}
+  user2 := User{“Muratcan”, “Oguz”, 24, []string{“Instagram”}}
+  crew := Crew{[]User{user1, user2}}&lt;/p&gt;
+
+&lt;p&gt;result, err := json.Marshal(crew)
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }&lt;/p&gt;
+
+&lt;p&gt;w.Header().Set(“Content-Type”, “application/json”)
+  w.Write(result)
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;I think the code is pretty self-explanatory, even if you’ve never coded in Go. Now let’s start the server. Make sure the file is in your &lt;code&gt;GOPATH&lt;/code&gt; under a folder called &lt;em&gt;staticJSON&lt;/em&gt;. Run the following commands from the terminal&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+go build
+./staticJSON
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Your server should be up and running! It generates the following JSON response when we hit &lt;em&gt;http://localhost:3000&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;{% highlight json %}
+{
+  “members”: [
+    {
+      “firstName”: “Kaan”,
+      “lastName”: “Dedeoglu”,
+      “age”: 26,
+      “accountTypes”: [
+        “Facebook”,
+        “Twitter”,
+        “Instagram”
+      ]
+    },
+    {
+      “firstName”: “Muratcan”,
+      “lastName”: “Oguz”,
+      “age”: 24,
+      “accountTypes”: [
+        “Instagram”
+      ]
+    }
+  ]
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-swift-side&quot;&gt;The Swift Side&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Since I’m also targeting iOS 7, my only option to add Alamofire/ObjectMapper to the project is by manually adding the source files. This approach is fine but it loses the namespaces, so the method &lt;code&gt;request&lt;/code&gt; would become &lt;code&gt;Alamofire.request&lt;/code&gt; if you’re adding the library as a dynamic framework.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Make sure you’ve imported both Alamofire and ObjectMapper into your project.&lt;/p&gt;
+
+&lt;p&gt;Alamofire uses the &lt;code&gt;Serializer&lt;/code&gt; type for encoding response data into different formats. Here’s its definition:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+typealias Serializer = (NSURLRequest, NSHTTPURLResponse?, NSData?) -&amp;gt; (AnyObject?, NSError?)
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;There are a few serializers that are included in the library:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;responseDataSerializer&lt;/code&gt; — Return the data as is&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;stringResponseSerializer&lt;/code&gt; — Return the data as a string&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;JSONResponseSerializer&lt;/code&gt; — Return the data as a JSON object&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;propertyListResponseSerializer&lt;/code&gt; — Return the data as a property list object&lt;/p&gt;
+
+&lt;p&gt;It is worth noting that as a client you never use these directly, instead, Alamofire comes with response methods that uses these. Here’s a list straight from the documentation:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;response()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;responseString(encoding: NSStringEncoding)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;responseJSON(options: NSJSONReadingOptions)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;responsePropertyList(options: NSPropertyListReadOptions)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With this knowledge, let’s get to work. Our plan is to create a new &lt;code&gt;Serializer&lt;/code&gt; that will map the received JSON to our type-safe class instances. Create a file called &lt;code&gt;AlamofireExtensions.swift&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+//AlamofireExtensions.swift
+import Foundation&lt;/p&gt;
+
+&lt;p&gt;extension Request {
+    public func responseObject&lt;t: mappable=&quot;&quot;&gt;(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -&amp;gt; Void) -&amp;gt; Self {
+        let serializer: Serializer = { (request, response, data) in
+            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let (JSON: AnyObject?, JSONError) = JSONSerializer(request, response, data)
+            if response != nil &amp;amp;&amp;amp; JSON != nil {
+                if let object: AnyObject = Mapper&lt;t&gt;().map(JSON) as? AnyObject {
+                    return (object, nil)
+                } else {
+                    return (nil, NSError(domain: &quot;Mapping&quot;, code: 404, userInfo: [NSLocalizedDescriptionKey:&quot;Error mapping JSON to class&quot;]))
+                }
+            } else {
+                return (nil, JSONError)
+            }
+        }&lt;/t&gt;&lt;/t:&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    return response(serializer: serializer, completionHandler: { (request, response, object, error) in
+        completionHandler(request, response, object as? T, error)
+    })
+} } {% endhighlight %}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we create a generic function &lt;code&gt;responseObject&lt;/code&gt; that does the magic. We create a &lt;code&gt;Serializer&lt;/code&gt; that parses the data into a JSON object - and then use it to create the required instance of type &lt;strong&gt;T&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;p&gt;The Mappable protocol is coming from &lt;code&gt;ObjectMapper&lt;/code&gt;, let’s see it in action.&lt;/p&gt;
+
+&lt;p&gt;Create &lt;code&gt;JSONModels.swift&lt;/code&gt; and add the following code:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+//JSONModels.swift
+import Foundation&lt;/p&gt;
+
+&lt;p&gt;class User: Mappable {
+    var firstName: String = “”
+    var lastName: String = “”
+    var age: Int?
+    var accountTypes: [String]?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;required init() {
+}
+
+func mapping(map: Map) {
+    firstName &amp;lt;= map[&quot;firstName&quot;]
+    lastName &amp;lt;= map[&quot;lastName&quot;]
+    age &amp;lt;= map[&quot;age&quot;]
+    accountTypes &amp;lt;= map[&quot;accountTypes&quot;]
+} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;class Crew: Mappable {
+    var members: [User]?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;required init(){}
+
+func mapping(map: Map) {
+    members &amp;lt;= map[&quot;members&quot;]
+} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;To model the responses, all we have to do is to create a class conforming to the &lt;code&gt;Mappable&lt;/code&gt; protocol with the appropriate fields, and implement the method called &lt;code&gt;mapping&lt;/code&gt;. It is dead simple: all you have to do is match every property name with the appropriate JSON field name.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Let’s try it out!&lt;/p&gt;
+
+&lt;p&gt;Place this code in a &lt;code&gt;viewDidLoad&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}&lt;/p&gt;
+
+&lt;p&gt;request(NSURLRequest(URL: NSURL(string: “http://localhost:3000”)!)).validate().responseObject() {
+    (request, response, object: Crew?, error) in
+    if let crew = object, let members = crew.members {
+        for user in members {
+            println(“(user.firstName) (user.lastName)”)
+        }
+    }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Notice that we are declaring object explicitly as of type &lt;code&gt;Crew?&lt;/code&gt;. This alone sets the type constraint T on the &lt;code&gt;responseObject&lt;/code&gt; method and our &lt;code&gt;Serializer&lt;/code&gt; maps to a Crew instance.&lt;/p&gt;
+
+&lt;p&gt;Run the application and you should see the following output in the console:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Kaan Dedeoglu&lt;/p&gt;
+
+  &lt;p&gt;Muratcan Oguz&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Putting a breakpoint will reveal that everything went as expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/JSONMapping/image.png&quot; alt=&quot;Breakpoint&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;One thing that didn’t work out was using &lt;code&gt;Mappable&lt;/code&gt; structs instead of classes. This is due to the fact that &lt;code&gt;Serializer&lt;/code&gt;’s are expected to return &lt;code&gt;AnyObject&lt;/code&gt; as its result, and structs are not &lt;code&gt;AnyObject&lt;/code&gt;, which is a shame since structs are the perfect value types.&lt;/p&gt;
+
+</content>
+<category term="JSON" />
+<category term="to" />
+<category term="object" />
+<category term="in" />
+<category term="Swift" />
+<summary>  This post uses Swift 1.2 beta and the Swift 1.2 branches for both Alamofire and ObjectMapper</summary>
+</entry>
+<entry>
+<title>First Post</title>
+<link href="http://kaandedeoglu.github.io//2015/02/03/first-post/" rel="alternate" type="text/html" title="First Post" />
+<published>2015-02-03T00:00:00+02:00</published>
+<updated>2015-02-03T00:00:00+02:00</updated>
+<id>http://kaandedeoglu.github.io//2015/02/03/first-post</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2015/02/03/first-post/">&lt;p&gt;This is just a warming up post for the blog. &lt;/p&gt;
+
+&lt;p&gt;Getting used to Jekyll and Markdown.&lt;/p&gt;
+</content>
+<summary>This is just a warming up post for the blog. </summary>
+</entry>
+</feed>

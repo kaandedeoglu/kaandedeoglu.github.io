@@ -18,9 +18,11 @@ pages_list:
   Home: '/'       
   About: '/about'
   Archive: '/archive'
-  Feed: '/feed.xml'
+
+gems: [jekyll-feed]
 
 # Custom vars
 version:          1.0.0
+highlighter: pygments
 github:
   repo:           https://github.com/kaandedeoglu
