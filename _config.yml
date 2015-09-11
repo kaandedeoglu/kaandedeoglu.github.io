@@ -19,7 +19,8 @@ pages_list:
   About: '/about'
   Archive: '/archive'
 
-gems: [jekyll-feed]
+gems:
+  - jekyll-feed
 
 # Custom vars
 version:          1.0.0

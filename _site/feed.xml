@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<generator uri="http://jekyllrb.com" version="2.5.3">Jekyll</generator>
+<generator uri="http://jekyllrb.com" version="2.4.0">Jekyll</generator>
 <link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
-<updated>2015-09-11T11:28:23+03:00</updated>
+<updated>2015-09-11T21:50:09+03:00</updated>
 <id>http://kaandedeoglu.github.io//</id>
 <author>
 <name>Kaan Dedeoglu</name>
