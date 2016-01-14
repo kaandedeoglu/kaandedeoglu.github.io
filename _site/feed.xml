@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<generator uri="http://jekyllrb.com" version="2.4.0">Jekyll</generator>
+<generator uri="http://jekyllrb.com" version="2.5.3">Jekyll</generator>
 <link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
-<updated>2015-09-11T21:56:27+03:00</updated>
+<updated>2016-01-14T17:03:00+02:00</updated>
 <id>http://kaandedeoglu.github.io//</id>
 <author>
 <name>Kaan Dedeoglu</name>
 <email>kaandedeoglu@me.com</email>
 </author>
+<entry>
+<title>Why I Love Swift</title>
+<link href="http://kaandedeoglu.github.io//2016/01/14/Why-I-Love-Swift/" rel="alternate" type="text/html" title="Why I Love Swift" />
+<published>2016-01-14T00:00:00+02:00</published>
+<updated>2016-01-14T00:00:00+02:00</updated>
+<id>http://kaandedeoglu.github.io//2016/01/14/Why-I-Love-Swift</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2016/01/14/Why-I-Love-Swift/">&lt;p&gt;Because.&lt;/p&gt;
+
+&lt;p&gt;This would take a lot more lines in Objective-C, and be less clear.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/SwiftLove/swift_love.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s the extension for it:&lt;/p&gt;
+
+&lt;p&gt;{% highlight swift %}
+extension Array {
+    func partitionBy(predicate: (Element -&amp;gt; Bool)) -&amp;gt; ([Element], [Element]) {
+        var left = &lt;a href=&quot;&quot;&gt;Element&lt;/a&gt;
+        var right = &lt;a href=&quot;&quot;&gt;Element&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    for elem in self {
+        if predicate(elem) {
+            left.append(elem)
+        } else {
+            right.append(elem)
+        }
+    }
+    
+    return (left, right)
+}   } {% endhighlight %}
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+<category term="Swift" />
+<summary>Because.</summary>
+</entry>
 <entry>
 <title>N’oluyo TV Guide</title>
 <link href="http://kaandedeoglu.github.io//2015/08/04/Noluyo-TV-Guide/" rel="alternate" type="text/html" title="N&#39;oluyo TV Guide" />
