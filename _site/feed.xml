@@ -3,12 +3,29 @@
 <generator uri="http://jekyllrb.com" version="2.5.3">Jekyll</generator>
 <link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
-<updated>2016-01-14T17:03:00+02:00</updated>
+<updated>2016-04-08T21:01:28+03:00</updated>
 <id>http://kaandedeoglu.github.io//</id>
 <author>
 <name>Kaan Dedeoglu</name>
 <email>kaandedeoglu@me.com</email>
 </author>
+<entry>
+<title>N’oluyo Kafakafaya</title>
+<link href="http://kaandedeoglu.github.io//2016/04/08/Noluyo-Kafakafaya/" rel="alternate" type="text/html" title="N&#39;oluyo Kafakafaya" />
+<published>2016-04-08T00:00:00+03:00</published>
+<updated>2016-04-08T00:00:00+03:00</updated>
+<id>http://kaandedeoglu.github.io//2016/04/08/Noluyo-Kafakafaya</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2016/04/08/Noluyo-Kafakafaya/">&lt;p&gt;Keeping with the videos..&lt;/p&gt;
+
+&lt;p&gt;Here’s Kafakafaya (translates to head to head) in N’oluyo. It’s a bracket based quiz, where we start with 16 characters and keep picking until we have a winner. Implementing the result screen actually took much longer than implementing the game screen + game logic. &lt;/p&gt;
+
+&lt;iframe width=&quot;350&quot; height=&quot;600&quot; src=&quot;https://www.youtube.com/embed/WeBEUH_3W-g&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</content>
+<category term="iOS," />
+<category term="Animation," />
+<category term="Interface" />
+<summary>Keeping with the videos..</summary>
+</entry>
 <entry>
 <title>Why I Love Swift</title>
 <link href="http://kaandedeoglu.github.io//2016/01/14/Why-I-Love-Swift/" rel="alternate" type="text/html" title="Why I Love Swift" />
