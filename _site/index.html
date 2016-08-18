@@ -65,6 +65,21 @@
   
   <article class="post">
     <h1 class="post-title">
+      <a href="/2016/08/19/Too-Much/">
+        Too much?
+      </a>
+    </h1>
+
+    <time datetime="2016-08-19T00:00:00+03:00" class="post-date">19 Aug 2016</time>
+
+    <p>It’s probably damn too hard to follow what’s going on - chances are I won’t even understand what’s going on in a couple of weeks. But these are just so much fun to write :)</p>
+
+<p><img src="http://kaandedeoglu.github.io/assets/TooMuch/too_much.png" alt="" /></p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
       <a href="/2016/04/08/Noluyo-Kafakafaya/">
         N'oluyo Kafakafaya
       </a>
@@ -77,42 +92,6 @@
 <p>Here’s Kafakafaya (translates to head to head) in N’oluyo. It’s a bracket based quiz, where we start with 16 characters and keep picking until we have a winner. Implementing the result screen actually took much longer than implementing the game screen + game logic. </p>
 
 <iframe width="350" height="600" src="https://www.youtube.com/embed/WeBEUH_3W-g" frameborder="0" allowfullscreen=""></iframe>
-
-  </article>
-  
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/2016/01/14/Why-I-Love-Swift/">
-        Why I Love Swift
-      </a>
-    </h1>
-
-    <time datetime="2016-01-14T00:00:00+02:00" class="post-date">14 Jan 2016</time>
-
-    <p>Because.</p>
-
-<p>This would take a lot more lines in Objective-C, and be less clear.</p>
-
-<p><img src="http://kaandedeoglu.github.io/assets/SwiftLove/swift_love.png" alt="" /></p>
-
-<p>Here’s the extension for it:</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="n">Array</span> <span class="p">{</span>
-    <span class="k">func</span> <span class="n">partitionBy</span><span class="p">(</span><span class="nl">predicate</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span> <span class="o">-&gt;</span> <span class="n">Bool</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">([</span><span class="n">Element</span><span class="p">],</span> <span class="p">[</span><span class="n">Element</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="kr">left</span> <span class="o">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">]()</span>
-        <span class="k">var</span> <span class="kr">right</span> <span class="o">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">]()</span>
-        
-        <span class="k">for</span> <span class="n">elem</span> <span class="k">in</span> <span class="nb">self</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kr">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="kr">right</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        
-        <span class="k">return</span> <span class="p">(</span><span class="kr">left</span><span class="p">,</span> <span class="kr">right</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span></code></pre></div>
 
   </article>
   
@@ -138,7 +117,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2016-04-08T21:01:28+03:00">2016</time>. Lazy thoughts, All rights reserved.
+          &copy; <time datetime="2016-08-19T00:24:37+03:00">2016</time>. Lazy thoughts, All rights reserved.
         </small>
       </footer>
     </div>

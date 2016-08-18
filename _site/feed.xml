@@ -3,12 +3,25 @@
 <generator uri="http://jekyllrb.com" version="2.5.3">Jekyll</generator>
 <link href="http://kaandedeoglu.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://kaandedeoglu.github.io//" rel="alternate" type="text/html" />
-<updated>2016-04-08T21:01:28+03:00</updated>
+<updated>2016-08-19T00:24:37+03:00</updated>
 <id>http://kaandedeoglu.github.io//</id>
 <author>
 <name>Kaan Dedeoglu</name>
 <email>kaandedeoglu@me.com</email>
 </author>
+<entry>
+<title>Too much?</title>
+<link href="http://kaandedeoglu.github.io//2016/08/19/Too-Much/" rel="alternate" type="text/html" title="Too much?" />
+<published>2016-08-19T00:00:00+03:00</published>
+<updated>2016-08-19T00:00:00+03:00</updated>
+<id>http://kaandedeoglu.github.io//2016/08/19/Too-Much</id>
+<content type="html" xml:base="http://kaandedeoglu.github.io//2016/08/19/Too-Much/">&lt;p&gt;It’s probably damn too hard to follow what’s going on - chances are I won’t even understand what’s going on in a couple of weeks. But these are just so much fun to write :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;{{ site.url }}/assets/TooMuch/too_much.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</content>
+<category term="Swift" />
+<summary>It’s probably damn too hard to follow what’s going on - chances are I won’t even understand what’s going on in a couple of weeks. But these are just so much fun to write :)</summary>
+</entry>
 <entry>
 <title>N’oluyo Kafakafaya</title>
 <link href="http://kaandedeoglu.github.io//2016/04/08/Noluyo-Kafakafaya/" rel="alternate" type="text/html" title="N&#39;oluyo Kafakafaya" />
